@@ -818,7 +818,116 @@
       padding: 22px;
       transition: all 200ms ease;
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* MUST be visible so dropdown isn't clipped */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Project card flex layout for equal height + sticky footer ── */
+    .project-card .project-desc,
+    .project-card .project-description {
+      flex: 1; /* pushes footer to bottom */
+    }
+
+    /* Project card header row */
+    .project-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    /* Logo inside project card */
+    .project-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--bg-elevated);
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    /* Monogram fallback for missing logos */
+    .logo-fallback {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 0 8px var(--accent-glow);
+      color: var(--accent-color);
+      font-family: var(--font-display), 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--transition-accent), box-shadow var(--transition-accent);
+    }
+
+    /* ── Project card footer ── */
+    .project-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ── Project action wrapper — positioned for dropdown ── */
+    .project-action-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* ── Dropdown panel ── */
+    .project-dropdown {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      padding: 8px;
+      min-width: 180px;
+      z-index: 9999;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      animation: dropFade 0.18s ease;
+    }
+
+    .project-dropdown.open {
+      display: block;
+    }
+
+    @keyframes dropFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-dropdown a {
+      display: block;
+      padding: 9px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-primary);
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+
+    .project-dropdown a:hover {
+      background: var(--accent-glow);
+      color: var(--accent-color);
+    }
+
+    /* ── Restricted badge ── */
+    .project-restricted-badge {
+      margin-bottom: 14px;
     }
 
     .project-card:hover {
@@ -953,46 +1062,7 @@
       color: var(--bg-base);
     }
 
-    .project-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 6px;
-      margin-top: 6px;
-      z-index: 100;
-      min-width: 120px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      display: none;
-    }
-
-    .project-dropdown.show {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-dropdown a {
-      padding: 10px 12px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border-subtle);
-      transition: all 150ms ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .project-dropdown a:last-child {
-      border-bottom: none;
-    }
-
-    .project-dropdown a:hover {
-      background: var(--bg-elevated);
-      color: var(--accent-color);
-    }
+    /* project-dropdown styles defined above in the new block */
 
     /* ──────────────────────────────────────────────────────────────── */
     /* CERTIFICATIONS SECTION */
@@ -1833,213 +1903,289 @@
     // ────────────────────────────────────────────────────────────────
     // PROJECTS SECTION
     // ────────────────────────────────────────────────────────────────
-    const projectsDataDA = [
-      {
-        title: "Cyber Crime Intelligence Analysis",
-        badge: "Featured · Law Enforcement",
-        description: "Conducted structured analytical examination of 20,000+ cybercrime complaint records (2019–2025) using Python and Pandas. Identified reporting trends, regional crime patterns, hotspot distributions across 75+ police divisions, and resolution rate evaluations.",
-        stack: ["Python", "Pandas", "Excel", "Geospatial Analysis", "Data Visualisation"],
-        metric: "20,000+ Records · 75+ Divisions",
-        link: "cybercrime",
-        featured: true,
-        restricted: true,
-        noLogo: true
-      },
-      {
-        title: "Uber Trip Demand Analysis",
-        badge: "Big Data · Transport",
-        description: "Analysed 4M+ Uber trip records to identify demand fluctuations, peak usage periods, and operational patterns using Python-based statistical analysis and structured visualisation techniques.",
-        stack: ["Python", "Pandas", "Matplotlib", "Statistical Analysis"],
-        metric: "4,000,000+ Records",
-        logo: "unifiedmentor",
-        link: "uber"
-      },
-      {
-        title: "Supply Chain Management Analysis",
-        badge: "Operations · Dashboard",
-        description: "Conducted analytical assessment of supply chain datasets to examine operational trends, inventory patterns, and logistics performance. Produced structured visual reports and analytical summaries.",
-        stack: ["Python", "Pandas", "Excel", "EDA", "Data Visualisation"],
-        metric: "End-to-End Analysis",
-        logo: "unifiedmentor",
-        link: "supplychain"
-      },
-      {
-        title: "Twitter Financial News Sentiment",
-        badge: "NLP · Text Analysis",
-        description: "Conducted analytical evaluation of financial news and Twitter text datasets to identify sentiment patterns and interpret textual behavioural trends using Python-based analysis workflows.",
-        stack: ["Python", "NLP", "Text Analysis", "Pandas"],
-        metric: "Sentiment Pipeline",
-        logo: "unifiedmentor",
-        link: "twitter"
-      },
-      {
-        title: "IBM HR Analytics — Employee Attrition",
-        badge: "HR Analytics · EDA",
-        description: "Performed exploratory analysis on 1,470+ employee records to identify workforce attrition patterns, retention factors, and behavioural trends using Python EDA techniques.",
-        stack: ["Python", "Pandas", "EDA", "Matplotlib", "Seaborn"],
-        metric: "1,470+ Records",
-        logo: "unifiedmentor",
-        link: "ibmhr"
-      },
-      {
-        title: "Laptop Configuration Analysis",
-        badge: "Analysis · Pricing",
-        description: "Analysed 1,200+ laptop configurations to uncover pricing patterns, specification trends, and performance-to-price relationships through structured EDA and comparative analysis.",
-        stack: ["Python", "Pandas", "Matplotlib", "EDA"],
-        metric: "1,200+ Configurations",
-        logo: "unifiedmentor",
-        link: "laptop"
-      }
-    ];
+    // ────────────────────────────────────────────────────────────────
+    // RESTRICTED MODAL FUNCTIONS
+    // ────────────────────────────────────────────────────────────────
+    function showRestrictedModal() {
+      const m = document.getElementById('restricted-modal');
+      m.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      m.querySelector('button').focus();
+    }
 
-    const projectsDataDS = [
-      {
-        title: "IBM HR Analytics — Employee Attrition",
-        badge: "Featured · Predictive ML",
-        description: "Built a predictive employee attrition model on 1,470+ records using Scikit-learn classification algorithms. Applied feature engineering, model evaluation, and generated data-driven HR retention recommendations.",
-        stack: ["Python", "Scikit-learn", "ML Classification", "Feature Engineering", "EDA"],
-        metric: "1,470+ Records · ML Model",
-        logo: "unifiedmentor",
-        link: "ibmhr",
-        featured: true
-      },
-      {
-        title: "Supply Chain Management Dashboard",
-        badge: "Dashboard · KPI",
-        description: "Designed an end-to-end supply chain analytics and optimisation pipeline integrating EDA and ML. Built Power BI dashboard tracking key operational KPIs, reducing manual reporting effort by ~35%.",
-        stack: ["Python", "SQL", "Power BI", "ML", "EDA"],
-        metric: "35% Reporting Reduction",
-        logo: "unifiedmentor",
-        link: "supplychain"
-      },
-      {
-        title: "Twitter Financial News Sentiment",
-        badge: "NLP · ML Pipeline",
-        description: "Built an NLP classification pipeline using Python to categorise financial news and Twitter data. Applied ML-based text classification to produce structured sentiment signals for analytical workflows.",
-        stack: ["Python", "NLP", "Scikit-learn", "Text Classification"],
-        metric: "ML Text Pipeline",
-        logo: "unifiedmentor",
-        link: "twitter"
-      },
-      {
-        title: "Uber Trip Demand Analysis",
-        badge: "Forecasting · Statistical",
-        description: "Processed 4M+ Uber trip records to model temporal demand cycles and regional usage trends. Applied statistical modeling and visualisation to support operational forecasting analysis.",
-        stack: ["Python", "Pandas", "Statistical Modeling", "Visualisation"],
-        metric: "4,000,000+ Records",
-        logo: "unifiedmentor",
-        link: "uber"
-      },
-      {
-        title: "Cyber Crime Intelligence Analysis",
-        badge: "Intelligence · Restricted",
-        description: "Developed a restricted analytical intelligence pipeline on 20,000+ cybercrime complaint records in collaboration with Kolhapur District Police. Included geospatial hotspot analysis, FIR pattern modeling, and resolution trend evaluation.",
-        stack: ["Python", "Pandas", "Geospatial Analysis", "Excel", "EDA"],
-        metric: "20,000+ Records · Restricted",
-        link: "cybercrime",
-        restricted: true,
-        noLogo: true
-      },
-      {
-        title: "Laptop Price Regression Analysis",
-        badge: "Regression · ML",
-        description: "Built and evaluated a regression model predicting laptop prices across 1,200+ hardware configurations. Included feature selection, encoding, and model benchmarking via Scikit-learn.",
-        stack: ["Python", "Scikit-learn", "Regression", "Feature Engineering"],
-        metric: "1,200+ Configurations",
-        logo: "unifiedmentor",
-        link: "laptop"
-      }
-    ];
+    function closeRestrictedModal() {
+      const m = document.getElementById('restricted-modal');
+      m.style.display = 'none';
+      document.body.style.overflow = '';
+    }
 
+    // ────────────────────────────────────────────────────────────────
+    // PROJECT DROPDOWN LOGIC
+    // ────────────────────────────────────────────────────────────────
+    (function setupProjectDropdowns() {
+      function closeAllDropdowns() {
+        document.querySelectorAll('.project-dropdown.open').forEach(d => d.classList.remove('open'));
+      }
+
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.view-project-btn');
+        if (btn) {
+          e.stopPropagation();
+          const key = btn.dataset.project;
+          if (key === 'cybercrime') {
+            showRestrictedModal();
+            return;
+          }
+          const dropdown = document.getElementById('dropdown-' + key);
+          if (!dropdown) return;
+          const isOpen = dropdown.classList.contains('open');
+          closeAllDropdowns();
+          if (!isOpen) dropdown.classList.add('open');
+          return;
+        }
+        if (!e.target.closest('.project-action-wrap')) {
+          closeAllDropdowns();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeAllDropdowns();
+          closeRestrictedModal();
+        }
+      });
+    })();
+
+    // ────────────────────────────────────────────────────────────────
+    // PROJECTS DATA
+    // ────────────────────────────────────────────────────────────────
+    const PROJECTS = {
+      da: [
+        {
+          key: 'cybercrime',
+          featured: true,
+          category: 'Geospatial · Law Enforcement · Intelligence',
+          title: 'Cyber Crime Intelligence Analysis',
+          subtitle: 'Kolhapur District Police Collaboration',
+          desc: 'Conducted structured analytical examination of 20,000+ cybercrime complaint records (2019–2025) using Python and Pandas. Identified reporting trends, regional crime patterns, and hotspot distributions across 75+ police divisions.',
+          stack: ['Python','Pandas','Excel','Geospatial Analysis','Data Visualisation'],
+          metric: '20,000+ Records · 75+ Divisions',
+          github: '',
+          restricted: true
+        },
+        {
+          key: 'uber',
+          category: 'Big Data · Transport',
+          title: 'Uber Trip Demand Analysis',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Analysed 4M+ Uber trip records to identify demand fluctuations, peak usage periods, and operational patterns using Python-based statistical analysis and structured visualisation techniques.',
+          stack: ['Python','Pandas','Matplotlib','Statistical Analysis'],
+          metric: '4,000,000+ Records',
+          github: 'https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting'
+        },
+        {
+          key: 'supplychain',
+          category: 'Operations · Dashboard',
+          title: 'Supply Chain Management Analysis',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Conducted analytical assessment of supply chain datasets to examine operational trends, inventory patterns, and logistics performance. Produced structured visual reports and analytical summaries.',
+          stack: ['Python','Pandas','Excel','EDA','Data Visualisation'],
+          metric: 'End-to-End Supply Chain Analysis',
+          github: 'https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-'
+        },
+        {
+          key: 'twitter',
+          category: 'NLP · Text Analysis',
+          title: 'Twitter Financial News Sentiment',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Conducted analytical evaluation of financial news and Twitter text datasets to identify sentiment patterns and interpret textual behavioural trends using Python-based analysis workflows.',
+          stack: ['Python','NLP','Text Analysis','Pandas'],
+          metric: 'Sentiment Classification Pipeline',
+          github: 'https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP'
+        },
+        {
+          key: 'ibmhr',
+          category: 'HR Analytics · EDA',
+          title: 'IBM HR Analytics — Employee Attrition',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Performed exploratory analysis on 1,470+ employee records to identify workforce attrition patterns, retention factors, and behavioural trends using Python EDA techniques.',
+          stack: ['Python','Pandas','EDA','Matplotlib','Seaborn'],
+          metric: '1,470+ Records Analyzed',
+          github: 'https://github.com/VishwasGurao/hr-employee-attrition-analysis'
+        },
+        {
+          key: 'laptop',
+          category: 'Analysis · Pricing',
+          title: 'Laptop Configuration Analysis',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Analysed 1,200+ laptop configurations to uncover pricing patterns, specification trends, and performance-to-price relationships through structured EDA and comparative analysis.',
+          stack: ['Python','Pandas','Matplotlib','EDA'],
+          metric: '1,200+ Configurations',
+          github: 'https://github.com/VishwasGurao/Laptop-Price-Prediction-ML'
+        }
+      ],
+      ds: [
+        {
+          key: 'ibmhr',
+          featured: true,
+          category: 'Predictive ML · HR Analytics',
+          title: 'IBM HR Analytics — Employee Attrition',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Built a predictive employee attrition model on 1,470+ records using Scikit-learn classification algorithms. Applied feature engineering, model evaluation, and generated data-driven HR retention recommendations.',
+          stack: ['Python','Scikit-learn','ML Classification','Feature Engineering','EDA'],
+          metric: '1,470+ Records · ML Model',
+          github: 'https://github.com/VishwasGurao/hr-employee-attrition-analysis'
+        },
+        {
+          key: 'supplychain',
+          category: 'Dashboard · KPI',
+          title: 'Supply Chain Management Dashboard',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Designed an end-to-end supply chain analytics pipeline integrating EDA and ML. Built Power BI dashboard tracking key operational KPIs, reducing manual reporting effort by ~35%.',
+          stack: ['Python','SQL','Power BI','ML','EDA'],
+          metric: '35% Reporting Reduction',
+          github: 'https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-'
+        },
+        {
+          key: 'twitter',
+          category: 'NLP · ML Pipeline',
+          title: 'Twitter Financial News Sentiment',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Built an NLP classification pipeline using Python to categorise financial news and Twitter data. Applied ML-based text classification to produce structured sentiment signals for analytical workflows.',
+          stack: ['Python','NLP','Scikit-learn','Text Classification'],
+          metric: 'ML Text Pipeline',
+          github: 'https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP'
+        },
+        {
+          key: 'uber',
+          category: 'Forecasting · Statistical',
+          title: 'Uber Trip Demand Analysis',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Processed 4M+ Uber trip records to model temporal demand cycles and regional usage trends. Applied statistical modeling and visualisation to support operational forecasting analysis.',
+          stack: ['Python','Pandas','Statistical Modeling','Visualisation'],
+          metric: '4,000,000+ Records',
+          github: 'https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting'
+        },
+        {
+          key: 'cybercrime',
+          category: 'Intelligence · Restricted',
+          title: 'Cyber Crime Intelligence Analysis',
+          logo: null,
+          desc: 'Developed a restricted analytical intelligence pipeline on 20,000+ cybercrime complaint records in collaboration with Kolhapur District Police. Included geospatial hotspot analysis, FIR pattern modeling, and resolution trend evaluation.',
+          stack: ['Python','Pandas','Geospatial Analysis','Excel','EDA'],
+          metric: '20,000+ Records · Restricted',
+          github: '',
+          restricted: true
+        },
+        {
+          key: 'laptop',
+          category: 'Regression · ML',
+          title: 'Laptop Price Regression Analysis',
+          logo: 'RES/unifiedmentor.png',
+          logoFallback: 'UM',
+          desc: 'Built and evaluated a regression model predicting laptop prices across 1,200+ configurations. Included feature selection, encoding, and model benchmarking via Scikit-learn.',
+          stack: ['Python','Scikit-learn','Regression','Feature Engineering'],
+          metric: '1,200+ Configurations',
+          github: 'https://github.com/VishwasGurao/Laptop-Price-Prediction-ML'
+        }
+      ]
+    };
+
+    const LINKEDIN_PROJECTS = 'https://www.linkedin.com/in/vishwas-gurav/details/projects/';
+
+    function buildProjectCard(p, isFeatured) {
+      const stackHTML = p.stack.map(s => `<span class="stack-pill">${s}</span>`).join('');
+
+      const logoHTML = (p.restricted && !p.logo)
+        ? `<div class="project-restricted-badge"><span class="badge badge-accent">RESTRICTED</span></div>`
+        : `<img src="${p.logo}" alt="${p.logoFallback || 'Project logo'}" loading="lazy" class="project-logo"
+             onerror="this.outerHTML='<div class=\\'logo-fallback\\'>${p.logoFallback || '?'}</div>'" />`;
+
+      const actionHTML = p.restricted
+        ? `<div class="project-action-wrap">
+             <button class="btn btn-primary view-project-btn" data-project="cybercrime">View Project ▾</button>
+           </div>`
+        : `<div class="project-action-wrap">
+             <button class="btn btn-primary view-project-btn" data-project="${p.key}">View Project ▾</button>
+             <div class="project-dropdown" id="dropdown-${p.key}">
+               <a href="${p.github}" target="_blank" rel="noopener noreferrer">GitHub →</a>
+               <a href="${LINKEDIN_PROJECTS}" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+             </div>
+           </div>`;
+
+      if (isFeatured) {
+        return `
+          <article class="project-card reveal" style="margin-bottom:24px;" aria-label="Featured project: ${p.title}">
+            <div class="project-card-header">
+              ${logoHTML}
+              <div>
+                <div class="project-category" style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-secondary);margin-bottom:4px;">${p.category}</div>
+                <h3 class="project-title">${p.title}</h3>
+                ${p.subtitle ? `<p style="font-size:12px;color:var(--text-secondary);margin-top:4px;">${p.subtitle}</p>` : ''}
+              </div>
+            </div>
+            <p class="project-desc project-description">${p.desc}</p>
+            <div class="project-stack">${stackHTML}</div>
+            <div class="project-card-footer">
+              <span class="project-metric">${p.metric}</span>
+              ${actionHTML}
+            </div>
+          </article>`;
+      }
+
+      return `
+        <article class="project-card reveal" aria-label="${p.title}">
+          <div class="project-card-header">
+            ${logoHTML}
+            <div>
+              <div class="project-category" style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-secondary);margin-bottom:4px;">${p.category}</div>
+              <h3 class="project-title" style="font-size:16px;">${p.title}</h3>
+            </div>
+          </div>
+          <p class="project-desc project-description">${p.desc}</p>
+          <div class="project-stack">${stackHTML}</div>
+          <div class="project-card-footer">
+            <span class="project-metric">${p.metric}</span>
+            ${actionHTML}
+          </div>
+        </article>`;
+    }
+
+    // ────────────────────────────────────────────────────────────────
+    // PROJECTS SECTION
+    // ────────────────────────────────────────────────────────────────
     function renderProjects() {
       const container = document.getElementById('projects-container');
-      container.innerHTML = '';
+      if (!container) return;
 
-      const projects = currentMode === 'da' ? projectsDataDA : projectsDataDS;
+      const mode = document.body.classList.contains('ds-mode') ? 'ds' : 'da';
+      const list = PROJECTS[mode];
 
-      projects.forEach((project, index) => {
-        const card = document.createElement('div');
-        card.className = 'project-card reveal';
-        if (project.featured) card.classList.add('project-card-featured');
+      // Featured card (index 0)
+      const featuredHTML = buildProjectCard(list[0], true);
 
-        let cardHTML = ``;
+      // Grid cards (index 1+)
+      const gridCardsHTML = list.slice(1).map(p => buildProjectCard(p, false)).join('');
+      const gridHTML = `<div class="projects-grid" id="projects-grid">${gridCardsHTML}</div>`;
 
-        if (!project.noLogo) {
-          cardHTML += `
-            <div class="project-header">
-              <div class="project-logo" id="proj-logo-${index}"></div>
-              <div class="project-meta">
-                <div class="project-title">${project.title}</div>
-                <div class="project-badge">${project.badge}${project.restricted ? '<span class="project-restricted">RESTRICTED</span>' : ''}</div>
-              </div>
-            </div>
-          `;
-        } else {
-          cardHTML += `
-            <div class="project-header no-logo">
-              <div class="project-meta">
-                <div class="project-title">${project.title}</div>
-                <div class="project-badge">${project.badge}${project.restricted ? '<span class="project-restricted">RESTRICTED</span>' : ''}</div>
-              </div>
-            </div>
-          `;
-        }
+      container.innerHTML = featuredHTML + gridHTML;
 
-        cardHTML += `
-          <div class="project-description">${project.description}</div>
-        `;
-
-        if (project.restricted) {
-          cardHTML += `
-            <div class="project-privacy-notice" id="privacy-notice-${index}">
-              This project was conducted in collaboration with Kolhapur District Police. Due to data privacy and institutional restrictions, project files, datasets, and detailed visuals cannot be publicly shared.
-            </div>
-          `;
-        }
-
-        cardHTML += `
-          <div class="project-stack">
-            ${project.stack.map(t => `<div class="stack-pill">${t}</div>`).join('')}
-          </div>
-          <div class="project-footer">
-            <div class="project-metric">${project.metric}</div>
-            <div class="project-action">
-              <button class="project-btn" id="proj-btn-${index}">View Project ▾</button>
-              <div class="project-dropdown" id="proj-dropdown-${index}">
-                ${!project.restricted ? `
-                  <a href="${CONFIG.PROJECT_LINKS[project.link]}" target="_blank" rel="noopener noreferrer">GitHub →</a>
-                ` : ''}
-              </div>
-            </div>
-          </div>
-        `;
-
-        card.innerHTML = cardHTML;
-        container.appendChild(card);
-
-        if (!project.noLogo) {
-          const logoEl = card.querySelector(`#proj-logo-${index}`);
-          logoEl.appendChild(logoWithFallback(CONFIG.LOGOS[project.logo], 'UM', 40));
-        }
-
-        const btn = card.querySelector(`#proj-btn-${index}`);
-        const dropdown = card.querySelector(`#proj-dropdown-${index}`);
-
-        if (project.restricted) {
-          btn.onclick = () => {
-            const notice = card.querySelector(`#privacy-notice-${index}`);
-            notice.classList.toggle('show');
-          };
-        } else {
-          btn.onclick = () => {
-            dropdown.classList.toggle('show');
-          };
-
-          document.addEventListener('click', (e) => {
-            if (!card.contains(e.target)) {
-              dropdown.classList.remove('show');
-            }
-          });
+      // Re-run reveal observer on newly created cards
+      container.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+        // Immediately reveal if already in viewport
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) {
+          el.classList.add('in-view');
         }
       });
     }
@@ -2291,6 +2437,38 @@
       updateScrollProgress();
     });
   </script>
+  <!-- Restricted Project Modal -->
+  <div id="restricted-modal" role="dialog" aria-modal="true" aria-label="Restricted project notice"
+       style="display:none; position:fixed; inset:0; z-index:99999;
+              background:rgba(10,12,16,0.85); backdrop-filter:blur(8px);
+              align-items:center; justify-content:center; padding:24px;">
+    <div style="background:var(--bg-elevated); border:1px solid var(--accent-border);
+                border-radius:16px; padding:36px 32px; max-width:480px; width:100%;
+                box-shadow:0 0 48px var(--accent-glow); position:relative;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em;
+                     color:var(--accent-color); background:var(--accent-glow);
+                     border:1px solid var(--accent-border); border-radius:50px;
+                     padding:3px 12px;">RESTRICTED</span>
+        <span style="font-family:'Syne',sans-serif; font-size:16px; font-weight:700;
+                     color:var(--text-primary);">Confidential Project</span>
+      </div>
+      <p style="font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text-secondary);
+                line-height:1.75; margin-bottom:28px;">
+        This project was conducted in collaboration with Kolhapur District Police.
+        Due to data privacy and institutional restrictions, project files, internal
+        dashboards, datasets, and investigation-sensitive information cannot be
+        publicly disclosed.
+      </p>
+      <button onclick="closeRestrictedModal()" aria-label="Close"
+              style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em;
+                     padding:10px 24px; border-radius:8px; border:1px solid var(--accent-border);
+                     background:transparent; color:var(--accent-color); cursor:pointer;">
+        Close
+      </button>
+    </div>
+  </div>
+
 </body>
 
 </html>
