@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap"
     rel="stylesheet">
 
   <style>
@@ -26,13 +26,13 @@
     /* GLOBAL RESET & CSS VARIABLES */
     /* ──────────────────────────────────────────────────────────────── */
     :root {
-      --bg-base: #0A0C10;
-      --bg-surface: #12151C;
-      --bg-elevated: #1A1F2B;
-      --text-primary: #F0F2F8;
-      --text-secondary: #8891A8;
-      --border-subtle: rgba(255, 255, 255, 0.07);
-      --border-medium: rgba(255, 255, 255, 0.12);
+      --bg-base: #040816;
+      --bg-surface: #0a1220;
+      --bg-elevated: #0f1c2e;
+      --text-primary: #E8EDF8;
+      --text-secondary: #7A8BA8;
+      --border-subtle: rgba(180, 210, 255, 0.07);
+      --border-medium: rgba(180, 210, 255, 0.13);
       --accent-color: #0ECEA0;
       --accent-glow: rgba(14, 206, 160, 0.08);
       --accent-border: rgba(14, 206, 160, 0.3);
@@ -60,11 +60,31 @@
 
     body {
       background: var(--bg-base);
+      background-image:
+        linear-gradient(to bottom,
+          #040816 0%,
+          #06101e 8%,
+          #07111f 15%,
+          #091523 22%,
+          #0b1a2a 30%,
+          #0e2033 38%,
+          #10253a 46%,
+          #132b42 54%,
+          #163048 62%,
+          #183550 70%,
+          #1a3a56 78%,
+          #1c3e5c 86%,
+          #1d4060 94%,
+          #1f4264 100%);
+      background-attachment: fixed;
       color: var(--text-primary);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.8;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.01em;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -84,31 +104,36 @@
     h4,
     h5,
     h6 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
     }
 
     h1 {
-      font-size: clamp(36px, 5vw, 64px);
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     h2 {
-      font-size: clamp(28px, 4vw, 48px);
+      font-size: clamp(28px, 4vw, 50px);
+      letter-spacing: -0.025em;
     }
 
     h3 {
       font-size: 22px;
+      letter-spacing: -0.015em;
     }
 
     .overline {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-color);
+      opacity: 0.9;
     }
 
     /* ──────────────────────────────────────────────────────────────── */
@@ -121,12 +146,61 @@
     }
 
     section {
-      padding: var(--section-pad-y) 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 120px;
       position: relative;
     }
 
+    section .container {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+    }
+
     section.hidden {
-      display: none;
+      display: none !important;
+    }
+
+    /* ── Section atmospheric overlays — morning light progression ── */
+    #hero {
+      background: transparent;
+    }
+
+    #about {
+      background: rgba(14, 32, 64, 0.18);
+    }
+
+    #skills {
+      background: rgba(18, 40, 72, 0.22);
+    }
+
+    #experience {
+      background: rgba(14, 36, 68, 0.18);
+    }
+
+    #projects {
+      background: rgba(20, 44, 78, 0.22);
+    }
+
+    #certs {
+      background: rgba(22, 48, 84, 0.20);
+    }
+
+    #education {
+      background: rgba(24, 52, 88, 0.22);
+    }
+
+    #contact {
+      background: rgba(26, 56, 92, 0.25);
     }
 
     /* ──────────────────────────────────────────────────────────────── */
@@ -138,9 +212,10 @@
       left: 0;
       right: 0;
       height: 64px;
-      background: rgba(10, 12, 16, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(180, 220, 255, 0.06);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(180, 220, 255, 0.1);
+      box-shadow: 0 1px 24px rgba(14, 206, 160, 0.04);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -156,7 +231,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       transition: opacity 250ms ease;
     }
 
@@ -164,7 +239,6 @@
       opacity: 0.8;
     }
 
-    .nav-logo img,
     .nav-logo-monogram {
       width: 36px;
       height: 36px;
@@ -174,13 +248,49 @@
       justify-content: center;
     }
 
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      padding: 8px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.04));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.35),
+        0 0 22px rgba(255, 215, 120, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .logo-wrapper:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.42),
+        0 0 28px rgba(255, 215, 120, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .main-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: brightness(1.18) contrast(1.1) saturate(1.1);
+      image-rendering: auto;
+    }
+
     .nav-logo-monogram {
       background: var(--bg-elevated);
       border: 1px solid var(--accent-border);
       font-size: 12px;
       font-weight: 700;
       color: var(--accent-color);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .nav-center {
@@ -194,12 +304,28 @@
       text-decoration: none;
       font-size: 13px;
       font-weight: 500;
-      transition: color 200ms ease;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      transition: color 220ms ease, background 220ms ease, border-color 220ms ease, transform 180ms ease, box-shadow 220ms ease;
+      position: relative;
     }
 
-    .nav-center a:hover,
+    .nav-center a:hover {
+      color: var(--accent-color);
+      background: rgba(14, 206, 160, 0.07);
+      border-color: rgba(14, 206, 160, 0.18);
+      transform: scale(1.04);
+      box-shadow: 0 0 12px rgba(14, 206, 160, 0.1);
+    }
+
     .nav-center a.active {
       color: var(--accent-color);
+      background: rgba(14, 206, 160, 0.1);
+      border-color: rgba(14, 206, 160, 0.25);
+      box-shadow: 0 0 16px rgba(14, 206, 160, 0.12);
     }
 
     @media (max-width: 768px) {
@@ -241,7 +367,7 @@
       cursor: pointer;
       border-radius: 20px;
       transition: all 250ms ease;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       white-space: nowrap;
     }
 
@@ -387,12 +513,13 @@
     /* HERO SECTION */
     /* ──────────────────────────────────────────────────────────────── */
     #hero {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding-top: 64px;
+      padding-bottom: 64px;
       position: relative;
     }
 
@@ -400,26 +527,32 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 700px;
+      max-width: 720px;
       padding: 0 var(--section-pad-x);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-overline {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .hero-name {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      text-shadow: 0 0 60px rgba(14, 206, 160, 0.12), 0 0 120px rgba(180, 210, 255, 0.06);
     }
 
     .hero-typewriter {
-      height: 48px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      font-family: 'Syne', sans-serif;
+      margin-bottom: 24px;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 36px;
       font-weight: 700;
       color: var(--accent-color);
@@ -450,30 +583,30 @@
     .hero-tagline {
       font-size: 16px;
       color: var(--text-secondary);
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 44px;
+      max-width: 560px;
+      line-height: 1.75;
     }
 
     .hero-cta {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 12px 24px;
+      padding: 12px 26px;
       border: 1px solid var(--accent-color);
       background: transparent;
       color: var(--accent-color);
       font-size: 13px;
       font-weight: 600;
-      border-radius: 6px;
+      letter-spacing: 0.02em;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 200ms ease;
-      font-family: 'DM Sans', sans-serif;
+      transition: all 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: 'Space Grotesk', sans-serif;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -483,16 +616,20 @@
     .btn:hover {
       background: var(--accent-color);
       color: var(--bg-base);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 24px rgba(14, 206, 160, 0.25);
     }
 
     .btn-primary {
       background: var(--accent-color);
       color: var(--bg-base);
+      box-shadow: 0 4px 16px rgba(14, 206, 160, 0.2);
     }
 
     .btn-primary:hover {
       background: transparent;
       color: var(--accent-color);
+      box-shadow: 0 6px 28px rgba(14, 206, 160, 0.18);
     }
 
     /* ──────────────────────────────────────────────────────────────── */
@@ -500,16 +637,18 @@
     /* ──────────────────────────────────────────────────────────────── */
     .section-header {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
 
     .section-header .overline {
       display: inline-block;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      letter-spacing: 0.16em;
     }
 
     .section-header h2 {
       margin-bottom: 0;
+      letter-spacing: -0.04em;
     }
 
     /* ──────────────────────────────────────────────────────────────── */
@@ -530,13 +669,16 @@
     }
 
     .about-quote {
-      background: var(--bg-elevated);
+      background: rgba(15, 28, 48, 0.7);
       border-left: 3px solid var(--accent-color);
-      padding: 24px;
-      border-radius: 8px;
+      padding: 28px;
+      border-radius: 10px;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.8;
       color: var(--text-secondary);
+      border: 1px solid rgba(180, 210, 255, 0.08);
+      border-left: 3px solid var(--accent-color);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
     .metrics-grid {
@@ -552,18 +694,25 @@
     }
 
     .metric-card {
-      background: var(--bg-elevated);
-      padding: 18px;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
+      background: rgba(15, 28, 48, 0.65);
+      padding: 20px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(180, 210, 255, 0.09);
       text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 200ms ease, border-color 200ms ease;
+    }
+
+    .metric-card:hover {
+      border-color: rgba(14, 206, 160, 0.2);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.3);
     }
 
     .metric-value {
       font-size: 28px;
       font-weight: 700;
       color: var(--accent-color);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       margin-bottom: 6px;
     }
 
@@ -575,28 +724,34 @@
     }
 
     .about-info-strip {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 18px;
+      background: rgba(14, 28, 52, 0.55);
+      border: 1px solid rgba(180, 210, 255, 0.1);
+      border-radius: 10px;
+      padding: 24px 32px;
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 48px;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
     }
 
     .info-item {
       display: flex;
       flex-direction: column;
       gap: 3px;
+      min-width: 140px;
+      align-items: center;
     }
 
     .info-label {
       font-size: 10px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
       text-transform: uppercase;
       color: var(--text-secondary);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
     }
 
     .info-value {
@@ -626,7 +781,7 @@
       font-weight: 600;
       color: var(--accent-color);
       margin-bottom: 20px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     .skill-bar-container {
@@ -649,10 +804,10 @@
 
     .skill-bar {
       height: 6px;
-      background: var(--bg-elevated);
+      background: rgba(180, 210, 255, 0.06);
       border-radius: 3px;
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(180, 210, 255, 0.08);
     }
 
     .skill-fill {
@@ -681,7 +836,7 @@
       font-size: 11px;
       font-weight: 500;
       color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
       transition: all 200ms ease;
     }
 
@@ -694,12 +849,13 @@
     /* EXPERIENCE SECTION */
     /* ──────────────────────────────────────────────────────────────── */
     .experience-card {
-      background: var(--bg-elevated);
+      background: rgba(15, 28, 48, 0.65);
       border-left: 3px solid var(--accent-color);
-      border-radius: 8px;
-      padding: 28px;
-      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 32px;
+      border: 1px solid rgba(180, 210, 255, 0.09);
       border-left: 3px solid var(--accent-color);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     }
 
     .experience-header {
@@ -733,7 +889,7 @@
       font-size: 16px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .experience-company {
@@ -745,7 +901,9 @@
     .experience-period {
       font-size: 12px;
       color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.01em;
     }
 
     .verify-btn {
@@ -812,21 +970,24 @@
     }
 
     .project-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 22px;
-      transition: all 200ms ease;
+      background: rgba(13, 24, 42, 0.72);
+      border: 1px solid rgba(180, 210, 255, 0.09);
+      border-radius: 10px;
+      padding: 24px;
+      transition: all 220ms ease;
       position: relative;
-      overflow: visible; /* MUST be visible so dropdown isn't clipped */
+      overflow: visible;
+      /* MUST be visible so dropdown isn't clipped */
       display: flex;
       flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
     }
 
     /* ── Project card flex layout for equal height + sticky footer ── */
     .project-card .project-desc,
     .project-card .project-description {
-      flex: 1; /* pushes footer to bottom */
+      flex: 1;
+      /* pushes footer to bottom */
     }
 
     /* Project card header row */
@@ -857,7 +1018,7 @@
       border: 1px solid var(--accent-border);
       box-shadow: 0 0 8px var(--accent-glow);
       color: var(--accent-color);
-      font-family: var(--font-display), 'Syne', sans-serif;
+      font-family: var(--font-display), 'Space Grotesk', sans-serif;
       font-weight: 700;
       font-size: 13px;
       display: flex;
@@ -896,7 +1057,7 @@
       padding: 8px;
       min-width: 180px;
       z-index: 9999;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       animation: dropFade 0.18s ease;
     }
 
@@ -905,15 +1066,23 @@
     }
 
     @keyframes dropFade {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .project-dropdown a {
       display: block;
       padding: 9px 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
       color: var(--text-primary);
       border-radius: 6px;
       transition: background 0.15s, color 0.15s;
@@ -932,7 +1101,8 @@
 
     .project-card:hover {
       border-color: var(--accent-border);
-      box-shadow: 0 8px 24px var(--accent-glow);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(14, 206, 160, 0.07);
+      transform: translateY(-3px);
     }
 
     .project-header {
@@ -960,15 +1130,16 @@
       font-size: 16px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       margin-bottom: 3px;
     }
 
     .project-badge {
       font-size: 10px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--text-secondary);
     }
 
@@ -1015,14 +1186,15 @@
     }
 
     .stack-pill {
-      padding: 5px 10px;
+      padding: 5px 11px;
       background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       font-size: 10px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
       color: var(--text-secondary);
       font-weight: 500;
+      letter-spacing: 0.01em;
     }
 
     .project-footer {
@@ -1037,7 +1209,8 @@
       font-size: 11px;
       font-weight: 600;
       color: var(--accent-color);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.01em;
     }
 
     .project-action {
@@ -1054,7 +1227,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 200ms ease;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     .project-btn:hover {
@@ -1080,17 +1253,19 @@
     }
 
     .cert-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 24px;
+      background: rgba(13, 24, 42, 0.72);
+      border: 1px solid rgba(180, 210, 255, 0.09);
+      border-radius: 10px;
+      padding: 28px 24px;
       text-align: center;
-      transition: all 200ms ease;
+      transition: all 240ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .cert-card:hover {
       border-color: var(--accent-border);
-      box-shadow: 0 8px 24px var(--accent-glow);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(14, 206, 160, 0.07);
+      transform: translateY(-4px);
     }
 
     .cert-logo {
@@ -1101,10 +1276,11 @@
 
     .cert-issuer {
       font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
       text-transform: uppercase;
       color: var(--accent-color);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.12em;
       margin-bottom: 10px;
     }
 
@@ -1113,7 +1289,7 @@
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 6px;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .cert-year {
@@ -1150,13 +1326,14 @@
     }
 
     .education-entry {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 22px;
+      background: rgba(13, 24, 42, 0.72);
+      border: 1px solid rgba(180, 210, 255, 0.09);
+      border-radius: 10px;
+      padding: 26px;
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .education-logo {
@@ -1173,7 +1350,7 @@
       font-size: 15px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       margin-bottom: 3px;
     }
 
@@ -1184,13 +1361,15 @@
     }
 
     .education-meta {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
       display: flex;
       gap: 12px;
       align-items: center;
       flex-wrap: wrap;
+      letter-spacing: -0.01em;
     }
 
     .badge {
@@ -1230,28 +1409,32 @@
     }
 
     .contact-btn {
-      padding: 10px 20px;
+      padding: 10px 22px;
       background: transparent;
       border: 1px solid var(--accent-color);
       color: var(--accent-color);
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 12px;
       font-weight: 600;
+      letter-spacing: 0.02em;
       cursor: pointer;
       text-decoration: none;
-      transition: all 200ms ease;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: all 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .contact-btn:hover {
       background: var(--accent-color);
       color: var(--bg-base);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(14, 206, 160, 0.25);
     }
 
     .contact-info {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 16px;
+      background: rgba(18, 40, 72, 0.5);
+      border: 1px solid rgba(180, 210, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px 24px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -1259,6 +1442,7 @@
       font-size: 12px;
       color: var(--text-secondary);
       line-height: 1.5;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
     }
 
     .contact-info-item {
@@ -1269,9 +1453,9 @@
     /* FOOTER */
     /* ──────────────────────────────────────────────────────────────── */
     footer {
-      background: var(--bg-surface);
-      border-top: 1px solid var(--border-subtle);
-      padding: 32px var(--section-pad-x);
+      background: rgba(18, 40, 72, 0.6);
+      border-top: 1px solid rgba(180, 210, 255, 0.1);
+      padding: 36px var(--section-pad-x);
       text-align: center;
       color: var(--text-secondary);
       font-size: 12px;
@@ -1286,8 +1470,8 @@
     /* ──────────────────────────────────────────────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 500ms ease, transform 500ms ease;
+      transform: translateY(22px);
+      transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.in-view {
@@ -1323,7 +1507,9 @@
   <!-- ═══ NAVBAR ═══ -->
   <header>
     <div class="nav-logo" id="nav-logo">
-      <span id="logo-text">VG</span>
+      <div class="logo-wrapper">
+        <img src="RES/logo.png" alt="Vishwas Gurav Logo" class="main-logo">
+      </div>
     </div>
 
     <nav class="nav-center" id="nav-center">
@@ -1378,7 +1564,7 @@
         </div>
         <p class="hero-tagline" id="hero-tagline">Turning raw data into clear analytical insights</p>
         <div class="hero-cta">
-          <a href="#" id="resume-btn" class="btn btn-primary" download>Download DA Resume</a>
+          <a href="#" id="resume-btn" class="btn btn-primary" download>Download Resume</a>
           <a href="#projects" class="btn">View Projects</a>
           <a href="#contact" class="btn">Contact Me</a>
         </div>
@@ -1401,20 +1587,20 @@
 
           <div class="metrics-grid">
             <div class="metric-card">
-              <div class="metric-value" data-target="20000">0</div>
-              <div class="metric-label">Cybercrime Records Analyzed</div>
+              <div class="metric-value" data-target="25000">0</div>
+              <div class="metric-label">Crime Records Analyzed</div>
             </div>
             <div class="metric-card">
               <div class="metric-value" data-target="4000000">0</div>
               <div class="metric-label">Uber Trip Records</div>
             </div>
             <div class="metric-card">
-              <div class="metric-value" data-target="1470">0</div>
+              <div class="metric-value" data-target="15000">0</div>
               <div class="metric-label">Employee Records</div>
             </div>
             <div class="metric-card">
-              <div class="metric-value" data-target="75">0</div>
-              <div class="metric-label">Police Divisions</div>
+              <div class="metric-value" data-target="30">0</div>
+              <div class="metric-label">Police Stations Analyzed</div>
             </div>
           </div>
         </div>
@@ -1439,10 +1625,6 @@
           <div class="info-item">
             <span class="info-label">Notice</span>
             <span class="info-value">Immediate Joiner</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Languages</span>
-            <span class="info-value">English, Marathi, Hindi</span>
           </div>
         </div>
       </div>
@@ -1479,7 +1661,7 @@
             <div class="experience-header-left">
               <div class="experience-logo" id="exp-logo"></div>
               <div class="experience-title">
-                <div class="experience-role" id="exp-role">Data Analyst Intern</div>
+                <div class="experience-role" id="exp-role">Data Science Intern</div>
                 <div class="experience-company">Unified Mentor Private Limited</div>
                 <div class="experience-period">Dec 2025 – Mar 2026</div>
               </div>
@@ -1568,7 +1750,7 @@
               <div class="education-institution">Shivaji University, Kolhapur, Maharashtra</div>
               <div class="education-meta">
                 <span>2024 – 2026</span>
-                <span class="badge">In Progress</span>
+                <span class="badge">Completed</span>
               </div>
             </div>
           </div>
@@ -1890,7 +2072,7 @@
       const roleName = document.getElementById('exp-role');
       const bullets = document.getElementById('exp-bullets');
 
-      roleName.textContent = currentMode === 'da' ? 'Data Analyst Intern' : 'Data Science Intern';
+      roleName.textContent = 'Data Science Intern';
 
       bullets.innerHTML = '';
       experienceData[currentMode].forEach(bullet => {
@@ -1927,7 +2109,7 @@
         document.querySelectorAll('.project-dropdown.open').forEach(d => d.classList.remove('open'));
       }
 
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         const btn = e.target.closest('.view-project-btn');
         if (btn) {
           e.stopPropagation();
@@ -1948,7 +2130,7 @@
         }
       });
 
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
           closeAllDropdowns();
           closeRestrictedModal();
@@ -1968,7 +2150,7 @@
           title: 'Cyber Crime Intelligence Analysis',
           subtitle: 'Kolhapur District Police Collaboration',
           desc: 'Conducted structured analytical examination of 20,000+ cybercrime complaint records (2019–2025) using Python and Pandas. Identified reporting trends, regional crime patterns, and hotspot distributions across 75+ police divisions.',
-          stack: ['Python','Pandas','Excel','Geospatial Analysis','Data Visualisation'],
+          stack: ['Python', 'Pandas', 'Excel', 'Geospatial Analysis', 'Data Visualisation'],
           metric: '20,000+ Records · 75+ Divisions',
           github: '',
           restricted: true
@@ -1980,7 +2162,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Analysed 4M+ Uber trip records to identify demand fluctuations, peak usage periods, and operational patterns using Python-based statistical analysis and structured visualisation techniques.',
-          stack: ['Python','Pandas','Matplotlib','Statistical Analysis'],
+          stack: ['Python', 'Pandas', 'Matplotlib', 'Statistical Analysis'],
           metric: '4,000,000+ Records',
           github: 'https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting'
         },
@@ -1991,7 +2173,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Conducted analytical assessment of supply chain datasets to examine operational trends, inventory patterns, and logistics performance. Produced structured visual reports and analytical summaries.',
-          stack: ['Python','Pandas','Excel','EDA','Data Visualisation'],
+          stack: ['Python', 'Pandas', 'Excel', 'EDA', 'Data Visualisation'],
           metric: 'End-to-End Supply Chain Analysis',
           github: 'https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-'
         },
@@ -2002,7 +2184,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Conducted analytical evaluation of financial news and Twitter text datasets to identify sentiment patterns and interpret textual behavioural trends using Python-based analysis workflows.',
-          stack: ['Python','NLP','Text Analysis','Pandas'],
+          stack: ['Python', 'NLP', 'Text Analysis', 'Pandas'],
           metric: 'Sentiment Classification Pipeline',
           github: 'https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP'
         },
@@ -2013,7 +2195,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Performed exploratory analysis on 1,470+ employee records to identify workforce attrition patterns, retention factors, and behavioural trends using Python EDA techniques.',
-          stack: ['Python','Pandas','EDA','Matplotlib','Seaborn'],
+          stack: ['Python', 'Pandas', 'EDA', 'Matplotlib', 'Seaborn'],
           metric: '1,470+ Records Analyzed',
           github: 'https://github.com/VishwasGurao/hr-employee-attrition-analysis'
         },
@@ -2024,7 +2206,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Analysed 1,200+ laptop configurations to uncover pricing patterns, specification trends, and performance-to-price relationships through structured EDA and comparative analysis.',
-          stack: ['Python','Pandas','Matplotlib','EDA'],
+          stack: ['Python', 'Pandas', 'Matplotlib', 'EDA'],
           metric: '1,200+ Configurations',
           github: 'https://github.com/VishwasGurao/Laptop-Price-Prediction-ML'
         }
@@ -2038,7 +2220,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Built a predictive employee attrition model on 1,470+ records using Scikit-learn classification algorithms. Applied feature engineering, model evaluation, and generated data-driven HR retention recommendations.',
-          stack: ['Python','Scikit-learn','ML Classification','Feature Engineering','EDA'],
+          stack: ['Python', 'Scikit-learn', 'ML Classification', 'Feature Engineering', 'EDA'],
           metric: '1,470+ Records · ML Model',
           github: 'https://github.com/VishwasGurao/hr-employee-attrition-analysis'
         },
@@ -2049,7 +2231,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Designed an end-to-end supply chain analytics pipeline integrating EDA and ML. Built Power BI dashboard tracking key operational KPIs, reducing manual reporting effort by ~35%.',
-          stack: ['Python','SQL','Power BI','ML','EDA'],
+          stack: ['Python', 'SQL', 'Power BI', 'ML', 'EDA'],
           metric: '35% Reporting Reduction',
           github: 'https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-'
         },
@@ -2060,7 +2242,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Built an NLP classification pipeline using Python to categorise financial news and Twitter data. Applied ML-based text classification to produce structured sentiment signals for analytical workflows.',
-          stack: ['Python','NLP','Scikit-learn','Text Classification'],
+          stack: ['Python', 'NLP', 'Scikit-learn', 'Text Classification'],
           metric: 'ML Text Pipeline',
           github: 'https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP'
         },
@@ -2071,7 +2253,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Processed 4M+ Uber trip records to model temporal demand cycles and regional usage trends. Applied statistical modeling and visualisation to support operational forecasting analysis.',
-          stack: ['Python','Pandas','Statistical Modeling','Visualisation'],
+          stack: ['Python', 'Pandas', 'Statistical Modeling', 'Visualisation'],
           metric: '4,000,000+ Records',
           github: 'https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting'
         },
@@ -2081,7 +2263,7 @@
           title: 'Cyber Crime Intelligence Analysis',
           logo: null,
           desc: 'Developed a restricted analytical intelligence pipeline on 20,000+ cybercrime complaint records in collaboration with Kolhapur District Police. Included geospatial hotspot analysis, FIR pattern modeling, and resolution trend evaluation.',
-          stack: ['Python','Pandas','Geospatial Analysis','Excel','EDA'],
+          stack: ['Python', 'Pandas', 'Geospatial Analysis', 'Excel', 'EDA'],
           metric: '20,000+ Records · Restricted',
           github: '',
           restricted: true
@@ -2093,7 +2275,7 @@
           logo: 'RES/unifiedmentor.png',
           logoFallback: 'UM',
           desc: 'Built and evaluated a regression model predicting laptop prices across 1,200+ configurations. Included feature selection, encoding, and model benchmarking via Scikit-learn.',
-          stack: ['Python','Scikit-learn','Regression','Feature Engineering'],
+          stack: ['Python', 'Scikit-learn', 'Regression', 'Feature Engineering'],
           metric: '1,200+ Configurations',
           github: 'https://github.com/VishwasGurao/Laptop-Price-Prediction-ML'
         }
@@ -2198,12 +2380,12 @@
       const contactResumeBtn = document.getElementById('contact-resume-btn');
 
       const url = currentMode === 'da' ? CONFIG.DA_RESUME : CONFIG.DS_RESUME;
-      const label = currentMode === 'da' ? 'Download DA Resume' : 'Download DS Resume';
+      const label = 'Download Resume';
 
       resumeBtn.href = url;
       resumeBtn.textContent = label;
       contactResumeBtn.href = url;
-      contactResumeBtn.textContent = 'Download ' + (currentMode === 'da' ? 'DA' : 'DS') + ' Resume';
+      contactResumeBtn.textContent = label;
     }
 
     // ────────────────────────────────────────────────────────────────
@@ -2333,7 +2515,7 @@
       const interval = setInterval(() => {
         current += step;
         if (current >= target) {
-          element.textContent = target.toLocaleString() + (target >= 1000 ? '' : '+');
+          element.textContent = target.toLocaleString() + '+';
           clearInterval(interval);
         } else {
           element.textContent = Math.floor(current).toLocaleString() + '+';
@@ -2438,8 +2620,7 @@
     });
   </script>
   <!-- Restricted Project Modal -->
-  <div id="restricted-modal" role="dialog" aria-modal="true" aria-label="Restricted project notice"
-       style="display:none; position:fixed; inset:0; z-index:99999;
+  <div id="restricted-modal" role="dialog" aria-modal="true" aria-label="Restricted project notice" style="display:none; position:fixed; inset:0; z-index:99999;
               background:rgba(10,12,16,0.85); backdrop-filter:blur(8px);
               align-items:center; justify-content:center; padding:24px;">
     <div style="background:var(--bg-elevated); border:1px solid var(--accent-border);
@@ -2460,8 +2641,7 @@
         dashboards, datasets, and investigation-sensitive information cannot be
         publicly disclosed.
       </p>
-      <button onclick="closeRestrictedModal()" aria-label="Close"
-              style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em;
+      <button onclick="closeRestrictedModal()" aria-label="Close" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em;
                      padding:10px 24px; border-radius:8px; border:1px solid var(--accent-border);
                      background:transparent; color:var(--accent-color); cursor:pointer;">
         Close
