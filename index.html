@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
@@ -28,9 +28,16 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vishwas Gurav Portfolio">
   <meta name="twitter:description" content="Data Analyst & Data Science Portfolio">
-  
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="RES/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="RES/favicon.png">
+  <link rel="apple-touch-icon" href="RES/favicon.png">
+  <link rel="shortcut icon" href="RES/favicon.png">
+
   <!-- ═══ STRUCTURED DATA ═══ -->
   <script type="application/ld+json">
+  [
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -55,9 +62,22 @@
       "addressRegion": "Maharashtra",
       "addressCountry": "IN"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Vishwas Gurav | Data Analyst Portfolio",
+    "description": "Official portfolio of Vishwas Gurav, Data Analyst and Data Science Intern.",
+    "url": "https://vishwasgurao.in/",
+    "author": { "@type": "Person", "name": "Vishwas Gurav" },
+    "inLanguage": "en-IN",
+    "isAccessibleForFree": true
   }
+  ]
   </script>
 
+  <meta name="theme-color" content="#040816">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -78,6 +98,13 @@
       color: #ffffff;
     }
 
+    @media print {
+      header, footer, .hamburger, .mobile-menu,
+      #scroll-progress, .mode-toggle-container, .available-badge { display: none !important; }
+      body { background: white !important; color: black !important; }
+      section { min-height: auto !important; padding: 24px 0 !important; }
+    }
+
     :root {
       --bg-base: #040816;
       --bg-surface: #0a1220;
@@ -92,6 +119,7 @@
       --transition-accent: 300ms ease;
       --container-max: 1200px;
       --section-pad-x: 48px;
+      --section-pad-x-sm: 20px;
       --section-pad-y: 80px;
     }
 
@@ -221,8 +249,24 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+      h1 { font-size: clamp(32px, 9vw, 48px); }
+      .hero-typewriter { font-size: 26px; }
+      .hero-tagline { font-size: 15px; }
+      .about-info-strip { gap: 24px; padding: 20px; }
+      .info-item { min-width: 110px; }
+    }
+
     section.hidden {
       display: none !important;
+    }
+
+    /* Offset for fixed navbar when jumping to sections */
+    section[id] {
+      scroll-margin-top: 64px;
     }
 
     /* ── Section atmospheric overlays — night → dawn → morning ── */
@@ -258,20 +302,6 @@
 
     /* Nav links centered between left edge and nav-right */
 
-    .nav-logo-monogram {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-elevated);
-      border: 1px solid var(--accent-border);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent-color);
-      font-family: 'Space Grotesk', sans-serif;
-    }
 
     /* Nav links centered absolutely */
     .nav-center {
@@ -303,6 +333,11 @@
       border-color: rgba(14, 206, 160, 0.14);
       transform: scale(1.03);
       box-shadow: 0 0 14px rgba(14, 206, 160, 0.08);
+    }
+
+    .nav-center a:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
     }
 
     .nav-center a.active {
@@ -454,12 +489,14 @@
       top: 64px;
       left: 0;
       right: 0;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(6, 14, 32, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(180, 220, 255, 0.08);
       z-index: 999;
-      padding: 16px var(--section-pad-x);
+      padding: 16px 24px;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .mobile-menu.open {
@@ -658,6 +695,32 @@
       background: transparent;
       color: var(--accent-color);
       box-shadow: 0 6px 28px rgba(14, 206, 160, 0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(14, 206, 160, 0.08);
+      border-color: var(--accent-border);
+      color: var(--accent-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-color);
+      color: var(--bg-base);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(14, 206, 160, 0.28);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(180, 210, 255, 0.2);
+      color: var(--text-secondary);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(180, 210, 255, 0.4);
+      color: var(--text-primary);
+      transform: translateY(-2px) scale(1.02);
     }
 
     /* ──────────────────────────────────────────────────────────────── */
@@ -906,14 +969,9 @@
     .experience-header-left {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
-    .experience-logo {
-      width: 52px;
-      height: 52px;
-      flex-shrink: 0;
-    }
 
     .experience-title {
       display: flex;
@@ -1026,40 +1084,7 @@
 
     /* Project card header row */
     .project-card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
       margin-bottom: 14px;
-    }
-
-    /* Logo inside project card */
-    .project-logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: var(--bg-elevated);
-      padding: 4px;
-      flex-shrink: 0;
-    }
-
-    /* Monogram fallback for missing logos */
-    .logo-fallback {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--accent-border);
-      box-shadow: 0 0 8px var(--accent-glow);
-      color: var(--accent-color);
-      font-family: var(--font-display), 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: border-color var(--transition-accent), box-shadow var(--transition-accent);
     }
 
     /* ── Project card footer ── */
@@ -1142,19 +1167,7 @@
       margin-bottom: 12px;
     }
 
-    .project-header.no-logo {
-      gap: 0;
-    }
 
-    .project-logo {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-    }
-
-    .project-meta {
-      flex: 1;
-    }
 
     .project-title {
       font-size: 16px;
@@ -1298,11 +1311,6 @@
       transform: translateY(-4px);
     }
 
-    .cert-logo {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 16px;
-    }
 
     .cert-issuer {
       font-size: 11px;
@@ -1373,11 +1381,6 @@
       border-color: rgba(14, 206, 160, 0.14);
     }
 
-    .education-logo {
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-    }
 
     .education-content {
       flex: 1;
@@ -1533,11 +1536,42 @@
       max-width: 100%;
       height: auto;
       display: block;
+      loading: lazy;
+    }
+
+    /* Skip link for keyboard accessibility */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--accent-color);
+      color: var(--bg-base);
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 0 0 8px 8px;
+      z-index: 99999;
+      transition: top 200ms ease;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Focus visible styles for keyboard nav */
+    :focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
   </style>
 </head>
 
 <body>
+
+  <!-- ═══ ACCESSIBILITY: SKIP LINK ═══ -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ═══ SCROLL PROGRESS BAR ═══ -->
   <div id="scroll-progress"></div>
@@ -1546,7 +1580,7 @@
   <header>
     <div id="nav-logo" style="display:none;"></div>
 
-    <nav class="nav-center" id="nav-center">
+    <nav class="nav-center" id="nav-center" aria-label="Primary navigation">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
@@ -1559,11 +1593,11 @@
     <div class="nav-right">
       <div class="mode-toggle-container">
         <div class="mode-toggle">
-          <button class="active" data-mode="da">Data Analyst</button>
-          <button data-mode="ds">Data Science</button>
+          <button class="active" data-mode="da" aria-pressed="true" aria-label="Switch to Data Analyst mode">Data Analyst</button>
+          <button data-mode="ds" aria-pressed="false" aria-label="Switch to Data Science mode">Data Science</button>
         </div>
       </div>
-      <div class="available-badge">
+      <div class="available-badge" role="status" aria-label="Open to work">
         <div class="available-dot"></div>
         Open to Work
       </div>
@@ -1576,7 +1610,7 @@
     </button>
   </header>
 
-  <nav class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
@@ -1586,31 +1620,32 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <main>
+  <main id="main-content">
     <!-- ═══ HERO SECTION ═══ -->
-    <section id="hero">
+    <section id="hero" aria-label="Introduction">
       <div class="hero-content">
         <div class="hero-overline overline">OPEN TO WORK — FRESHER</div>
-        <h1 class="hero-name" id="hero-name">VISHWAS GURAV</h1>
+        <h1 class="hero-name" id="hero-name" aria-label="Vishwas Gurav, Data Analyst and Data Science professional">VISHWAS GURAV</h1>
         <div class="hero-typewriter" id="hero-typewriter">
-          <span id="typewriter-text"></span>
+          <span id="typewriter-text" aria-live="polite" aria-atomic="true"></span>
           <div class="typewriter-cursor"></div>
         </div>
         <p class="hero-tagline" id="hero-tagline">Transforming complex datasets into actionable analytical intelligence</p>
         <div class="hero-cta">
-          <a href="#" id="resume-btn" class="btn btn-primary" download>Download Resume</a>
-          <a href="#projects" class="btn">View Projects</a>
-          <a href="#contact" class="btn">Contact Me</a>
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#" id="resume-btn" class="btn btn-secondary" download>Download Resume</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
         </div>
       </div>
     </section>
 
     <!-- ═══ ABOUT SECTION ═══ -->
-    <section id="about" class="reveal">
+    <section id="about" class="reveal" aria-label="About Vishwas Gurav">
       <div class="container">
         <div class="section-header">
           <div class="overline">ABOUT ME</div>
           <h2>The Story Behind The Data</h2>
+          <!-- SEO: About Vishwas Gurav, Data Analyst from Kolhapur -->
         </div>
 
         <div class="about-grid">
@@ -1665,7 +1700,7 @@
     </section>
 
     <!-- ═══ SKILLS SECTION ═══ -->
-    <section id="skills" class="reveal">
+    <section id="skills" class="reveal" aria-label="Skills and expertise">
       <div class="container">
         <div class="section-header">
           <div class="overline">EXPERTISE</div>
@@ -1683,7 +1718,7 @@
     </section>
 
     <!-- ═══ EXPERIENCE SECTION ═══ -->
-    <section id="experience" class="reveal">
+    <section id="experience" class="reveal" aria-label="Work experience">
       <div class="container">
         <div class="section-header">
           <div class="overline">WORK HISTORY</div>
@@ -1693,7 +1728,6 @@
         <div class="experience-card">
           <div class="experience-header">
             <div class="experience-header-left">
-              <div class="experience-logo" id="exp-logo"></div>
               <div class="experience-title">
                 <div class="experience-role" id="exp-role">Data Science Intern</div>
                 <div class="experience-company">Unified Mentor Private Limited</div>
@@ -1701,7 +1735,7 @@
               </div>
             </div>
             <button class="verify-btn"
-              onclick="window.open('https://unifiedmentor.com/verify-certificate/UMID26112571679', '_blank')">Verify
+              onclick="window.open('https://unifiedmentor.com/verify-certificate/UMID26112571679', '_blank', 'noopener,noreferrer')">Verify
               ▾</button>
           </div>
 
@@ -1713,7 +1747,7 @@
     </section>
 
     <!-- ═══ PROJECTS SECTION ═══ -->
-    <section id="projects" class="reveal">
+    <section id="projects" class="reveal" aria-label="Projects portfolio">
       <div class="container">
         <div class="section-header">
           <div class="overline">SELECTED WORK</div>
@@ -1727,7 +1761,7 @@
     </section>
 
     <!-- ═══ CERTIFICATIONS SECTION ═══ -->
-    <section id="certs" class="reveal">
+    <section id="certs" class="reveal" aria-label="Certifications and credentials">
       <div class="container">
         <div class="section-header">
           <div class="overline">CREDENTIALS</div>
@@ -1736,7 +1770,6 @@
 
         <div class="certs-grid">
           <div class="cert-card">
-            <div class="cert-logo" id="cert-logo-1"></div>
             <div class="cert-issuer">Deloitte Australia</div>
             <div class="cert-title">Data Analytics</div>
             <div class="cert-year">2025</div>
@@ -1746,7 +1779,6 @@
           </div>
 
           <div class="cert-card">
-            <div class="cert-logo" id="cert-logo-2"></div>
             <div class="cert-issuer">Cisco</div>
             <div class="cert-title">Data Science</div>
             <div class="cert-year">2025</div>
@@ -1756,7 +1788,6 @@
           </div>
 
           <div class="cert-card">
-            <div class="cert-logo" id="cert-logo-3"></div>
             <div class="cert-issuer">Tata Group</div>
             <div class="cert-title">Cybersecurity Analyst</div>
             <div class="cert-year">2025</div>
@@ -1769,7 +1800,7 @@
     </section>
 
     <!-- ═══ EDUCATION SECTION ═══ -->
-    <section id="education" class="reveal">
+    <section id="education" class="reveal" aria-label="Academic background">
       <div class="container">
         <div class="section-header">
           <div class="overline">ACADEMIC BACKGROUND</div>
@@ -1778,7 +1809,6 @@
 
         <div class="education-entries">
           <div class="education-entry">
-            <div class="education-logo" id="edu-logo-1"></div>
             <div class="education-content">
               <div class="education-degree">MCA — Data Science</div>
               <div class="education-institution">Shivaji University, Kolhapur, Maharashtra</div>
@@ -1790,7 +1820,6 @@
           </div>
 
           <div class="education-entry">
-            <div class="education-logo" id="edu-logo-2"></div>
             <div class="education-content">
               <div class="education-degree">Bachelor of Computer Science</div>
               <div class="education-institution">Shree Chatrapati Shivaji College, Omerga</div>
@@ -1804,7 +1833,7 @@
     </section>
 
     <!-- ═══ CONTACT SECTION ═══ -->
-    <section id="contact" class="reveal">
+    <section id="contact" class="reveal" aria-label="Contact information">
       <div class="container">
         <div class="section-header">
           <div class="overline">GET IN TOUCH</div>
@@ -1843,7 +1872,7 @@
   </main>
 
   <!-- ═══ FOOTER ═══ -->
-  <footer>
+  <footer role="contentinfo" aria-label="Site footer">
     <p style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em;">Designed & Developed by Vishwas Gurav</p>
     <p style="font-family:'Inter',sans-serif; font-size:11px; color:var(--text-secondary); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">Data Analytics &nbsp;·&nbsp; Data Science &nbsp;·&nbsp; Intelligence Systems</p>
     <div style="width:40px; height:1px; background:rgba(180,210,255,0.12); margin:0 auto 14px;"></div>
@@ -1866,16 +1895,7 @@
       DA_RESUME: "RES/Vishwas_DataAnalyst.pdf",
       DS_RESUME: "RES/Vishwas_DataScienceIntern.pdf",
 
-      LOGOS: {
-        unifiedmentor: "RES/unifiedmentor.png",
-        deloitte: "RES/deloitte.png",
-        cisco: "RES/cisco.png",
-        tata: "RES/tata.png",
-        shivaji: "RES/shivaji-university.png",
-        college: "RES/college.png"
-      },
-
-      PROJECT_LINKS: {
+            PROJECT_LINKS: {
         supplychain: "https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-",
         laptop: "https://github.com/VishwasGurao/Laptop-Price-Prediction-ML",
         twitter: "https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP",
@@ -1911,45 +1931,6 @@
       updateTagline();
     }
 
-    // ────────────────────────────────────────────────────────────────
-    // LOGO WITH FALLBACK
-    // ────────────────────────────────────────────────────────────────
-    function logoWithFallback(src, initials, sizePx) {
-      const container = document.createElement('div');
-      container.style.width = sizePx + 'px';
-      container.style.height = sizePx + 'px';
-
-      const img = document.createElement('img');
-      img.src = src;
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.borderRadius = '6px';
-      img.style.objectFit = 'contain';
-      img.loading = 'lazy';
-
-      const fallback = document.createElement('div');
-      fallback.style.width = sizePx + 'px';
-      fallback.style.height = sizePx + 'px';
-      fallback.style.background = 'var(--bg-elevated)';
-      fallback.style.border = '1px solid var(--accent-border)';
-      fallback.style.borderRadius = '6px';
-      fallback.style.display = 'flex';
-      fallback.style.alignItems = 'center';
-      fallback.style.justifyContent = 'center';
-      fallback.style.color = 'var(--accent-color)';
-      fallback.style.fontSize = (sizePx / 2.8) + 'px';
-      fallback.style.fontWeight = '700';
-      fallback.style.fontFamily = 'Space Grotesk, sans-serif';
-      fallback.textContent = initials;
-
-      img.onerror = () => {
-        container.innerHTML = '';
-        container.appendChild(fallback);
-      };
-
-      container.appendChild(img);
-      return container;
-    }
 
     // ────────────────────────────────────────────────────────────────
     // ABOUT SECTION
@@ -2195,8 +2176,6 @@
           key: 'uber',
           category: 'Big Data · Transport',
           title: 'Uber Trip Demand Analysis',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Analysed 4M+ Uber trip records to identify demand fluctuations, peak usage periods, and operational patterns using Python-based statistical analysis and structured visualisation techniques.',
           stack: ['Python','Pandas','Matplotlib','Statistical Analysis'],
           metric: '4,000,000+ Records',
@@ -2206,8 +2185,6 @@
           key: 'supplychain',
           category: 'Operations · Dashboard',
           title: 'Supply Chain Management Analysis',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Conducted analytical assessment of supply chain datasets to examine operational trends, inventory patterns, and logistics performance. Produced structured visual reports and analytical summaries.',
           stack: ['Python','Pandas','Excel','EDA','Data Visualisation'],
           metric: 'End-to-End Supply Chain Analysis',
@@ -2217,8 +2194,6 @@
           key: 'twitter',
           category: 'NLP · Text Analysis',
           title: 'Twitter Financial News Sentiment',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Conducted analytical evaluation of financial news and Twitter text datasets to identify sentiment patterns and interpret textual behavioural trends using Python-based analysis workflows.',
           stack: ['Python','NLP','Text Analysis','Pandas'],
           metric: 'Sentiment Classification Pipeline',
@@ -2228,8 +2203,6 @@
           key: 'ibmhr',
           category: 'HR Analytics · EDA',
           title: 'IBM HR Analytics — Employee Attrition',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Performed exploratory analysis on 1,470+ employee records to identify workforce attrition patterns, retention factors, and behavioural trends using Python EDA techniques.',
           stack: ['Python','Pandas','EDA','Matplotlib','Seaborn'],
           metric: '1,470+ Records Analyzed',
@@ -2239,8 +2212,6 @@
           key: 'laptop',
           category: 'Analysis · Pricing',
           title: 'Laptop Configuration Analysis',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Analysed 1,200+ laptop configurations to uncover pricing patterns, specification trends, and performance-to-price relationships through structured EDA and comparative analysis.',
           stack: ['Python','Pandas','Matplotlib','EDA'],
           metric: '1,200+ Configurations',
@@ -2253,8 +2224,6 @@
           featured: true,
           category: 'Predictive ML · HR Analytics',
           title: 'IBM HR Analytics — Employee Attrition',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Built a predictive employee attrition model on 1,470+ records using Scikit-learn classification algorithms. Applied feature engineering, model evaluation, and generated data-driven HR retention recommendations.',
           stack: ['Python','Scikit-learn','ML Classification','Feature Engineering','EDA'],
           metric: '1,470+ Records · ML Model',
@@ -2264,8 +2233,6 @@
           key: 'supplychain',
           category: 'Dashboard · KPI',
           title: 'Supply Chain Management Dashboard',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Designed an end-to-end supply chain analytics pipeline integrating EDA and ML. Built Power BI dashboard tracking key operational KPIs, reducing manual reporting effort by ~35%.',
           stack: ['Python','SQL','Power BI','ML','EDA'],
           metric: '35% Reporting Reduction',
@@ -2275,8 +2242,6 @@
           key: 'twitter',
           category: 'NLP · ML Pipeline',
           title: 'Twitter Financial News Sentiment',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Built an NLP classification pipeline using Python to categorise financial news and Twitter data. Applied ML-based text classification to produce structured sentiment signals for analytical workflows.',
           stack: ['Python','NLP','Scikit-learn','Text Classification'],
           metric: 'ML Text Pipeline',
@@ -2286,8 +2251,6 @@
           key: 'uber',
           category: 'Forecasting · Statistical',
           title: 'Uber Trip Demand Analysis',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Processed 4M+ Uber trip records to model temporal demand cycles and regional usage trends. Applied statistical modeling and visualisation to support operational forecasting analysis.',
           stack: ['Python','Pandas','Statistical Modeling','Visualisation'],
           metric: '4,000,000+ Records',
@@ -2297,7 +2260,6 @@
           key: 'cybercrime',
           category: 'Intelligence · Restricted',
           title: 'Cyber Crime Intelligence Analysis',
-          logo: null,
           desc: 'Developed a restricted analytical intelligence pipeline on 25,000+ cybercrime complaint records in collaboration with Kolhapur District Police. Included geospatial hotspot analysis, FIR pattern modeling, and resolution trend evaluation.',
           stack: ['Python','Pandas','Geospatial Analysis','Excel','EDA'],
           metric: '25,000+ Records · Restricted',
@@ -2308,8 +2270,6 @@
           key: 'laptop',
           category: 'Regression · ML',
           title: 'Laptop Price Regression Analysis',
-          logo: 'RES/unifiedmentor.png',
-          logoFallback: 'UM',
           desc: 'Built and evaluated a regression model predicting laptop prices across 1,200+ configurations. Included feature selection, encoding, and model benchmarking via Scikit-learn.',
           stack: ['Python','Scikit-learn','Regression','Feature Engineering'],
           metric: '1,200+ Configurations',
@@ -2323,10 +2283,9 @@
     function buildProjectCard(p, isFeatured) {
       const stackHTML = p.stack.map(s => `<span class="stack-pill">${s}</span>`).join('');
 
-      const logoHTML = (p.restricted && !p.logo)
+      const restrictedBadgeHTML = p.restricted
         ? `<div class="project-restricted-badge"><span class="badge badge-accent">RESTRICTED</span></div>`
-        : `<img src="${p.logo}" alt="${p.logoFallback || 'Project logo'}" loading="lazy" class="project-logo"
-             onerror="this.outerHTML='<div class=\\'logo-fallback\\'>${p.logoFallback || '?'}</div>'" />`;
+        : '';
 
       const actionHTML = p.restricted
         ? `<div class="project-action-wrap">
@@ -2343,13 +2302,11 @@
       if (isFeatured) {
         return `
           <article class="project-card reveal" style="margin-bottom:24px;" aria-label="Featured project: ${p.title}">
+            ${restrictedBadgeHTML}
             <div class="project-card-header">
-              ${logoHTML}
-              <div>
-                <div class="project-category" style="font-size:10px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:6px;">${p.category}</div>
-                <h3 class="project-title">${p.title}</h3>
-                ${p.subtitle ? `<p style="font-size:12px;color:var(--text-secondary);margin-top:4px;">${p.subtitle}</p>` : ''}
-              </div>
+              <div class="project-category" style="font-size:10px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:6px;">${p.category}</div>
+              <h3 class="project-title">${p.title}</h3>
+              ${p.subtitle ? `<p style="font-size:12px;color:var(--text-secondary);margin-top:4px;">${p.subtitle}</p>` : ''}
             </div>
             <p class="project-desc project-description">${p.desc}</p>
             <div class="project-stack">${stackHTML}</div>
@@ -2362,12 +2319,10 @@
 
       return `
         <article class="project-card reveal" aria-label="${p.title}">
+          ${restrictedBadgeHTML}
           <div class="project-card-header">
-            ${logoHTML}
-            <div>
-              <div class="project-category" style="font-size:10px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:6px;">${p.category}</div>
-              <h3 class="project-title" style="font-size:16px;">${p.title}</h3>
-            </div>
+            <div class="project-category" style="font-size:10px;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:6px;">${p.category}</div>
+            <h3 class="project-title" style="font-size:16px;">${p.title}</h3>
           </div>
           <p class="project-desc project-description">${p.desc}</p>
           <div class="project-stack">${stackHTML}</div>
@@ -2443,24 +2398,6 @@
       document.getElementById('nav-logo').onclick = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
-
-      const certLogo1 = document.getElementById('cert-logo-1');
-      certLogo1.appendChild(logoWithFallback(CONFIG.LOGOS.deloitte, 'D', 52));
-
-      const certLogo2 = document.getElementById('cert-logo-2');
-      certLogo2.appendChild(logoWithFallback(CONFIG.LOGOS.cisco, 'C', 52));
-
-      const certLogo3 = document.getElementById('cert-logo-3');
-      certLogo3.appendChild(logoWithFallback(CONFIG.LOGOS.tata, 'T', 52));
-
-      const expLogo = document.getElementById('exp-logo');
-      expLogo.appendChild(logoWithFallback(CONFIG.LOGOS.unifiedmentor, 'UM', 52));
-
-      const eduLogo1 = document.getElementById('edu-logo-1');
-      eduLogo1.appendChild(logoWithFallback(CONFIG.LOGOS.shivaji, 'SU', 44));
-
-      const eduLogo2 = document.getElementById('edu-logo-2');
-      eduLogo2.appendChild(logoWithFallback(CONFIG.LOGOS.college, 'CS', 44));
 
       renderAbout();
       renderSkills();
