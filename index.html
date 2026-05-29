@@ -34,61 +34,245 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap"
     rel=stylesheet>
-  <script type=application/ld+json>
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+
     {
       "@type": "Person",
       "@id": "https://vishwasgurao.in/#person",
       "name": "Vishwas Gurao",
       "alternateName": ["Vishwas Gurav", "Vishwas Gurav Data Analyst", "Vishwas Gurao Data Analyst"],
       "url": "https://vishwasgurao.in",
+      "image": "https://vishwasgurao.in/RES/fav.png",
       "email": "vishwasforjobhunt@gmail.com",
-        "jobTitle": "Data Analyst",
-        "description": "Data Analyst and Data Science Intern based in Kolhapur, India, specialising in Python, SQL, EDA, and machine learning.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kolhapur",
-          "addressRegion": "Maharashtra",
-          "addressCountry": "IN"
+      "jobTitle": "Data Analyst",
+      "description": "Fresher Data Analyst and MCA (Data Science) student at Shivaji University, Kolhapur, India. Specialises in Python, SQL, Power BI, EDA, and machine learning. Projects include cybercrime intelligence analysis, supply chain analytics, NLP sentiment analysis, and demand forecasting.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kolhapur",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Data Analyst",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
         },
-        "sameAs": [
-          "https://github.com/VishwasGurao",
-          "https://www.linkedin.com/in/vishwas-gurav/"
-        ],
-        "knowsAbout": ["Data Analysis", "Python", "SQL", "Machine Learning", "Data Visualisation", "NLP", "EDA"]
+        "skills": "Python, SQL, Power BI, Pandas, Matplotlib, Seaborn, Machine Learning, EDA, Data Visualisation, NLP"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://vishwasgurao.in/#website",
-        "url": "https://vishwasgurao.in",
-        "name": "Vishwas Gurao Portfolio",
-        "description": "Analytics Intelligence Portfolio of Vishwas Gurao — Data Analyst and Data Science Intern from Kolhapur, India.",
-        "author": { "@id": "https://vishwasgurao.in/#person" }
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://unishivaji.ac.in/#organization",
+          "name": "Shivaji University",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolhapur",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Data Analysis",
+        "Python",
+        "SQL",
+        "Power BI",
+        "Machine Learning",
+        "Data Visualisation",
+        "NLP",
+        "Exploratory Data Analysis",
+        "Supply Chain Analytics",
+        "Cybercrime Analytics",
+        "Demand Forecasting",
+        "HR Analytics",
+        "Financial Sentiment Analysis"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "professional",
+        "email": "vishwasforjobhunt@gmail.com",
+        "url": "https://vishwasgurao.in/#contact"
       },
-      {
-        "@type": "ProfilePage",
-        "@id": "https://vishwasgurao.in/#profilepage",
-        "url": "https://vishwasgurao.in",
-        "name": "Vishwas Gurao — Data Analyst Portfolio",
-        "mainEntity": { "@id": "https://vishwasgurao.in/#person" },
-        "about": { "@id": "https://vishwasgurao.in/#person" }
-      },
-      {
-        "@type": "ItemList",
-        "name": "Analytics Projects by Vishwas Gurao",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Cyber Crime Intelligence Analysis", "url": "https://github.com/VishwasGurao/CyberCrime-Intelligence-Dashboard" },
-          { "@type": "ListItem", "position": 2, "name": "Uber Demand Forecasting Analysis", "url": "https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting" },
-          { "@type": "ListItem", "position": 3, "name": "Financial Sentiment Analysis (NLP)", "url": "https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP" },
-          { "@type": "ListItem", "position": 4, "name": "Supply Chain Analytics", "url": "https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-" },
-          { "@type": "ListItem", "position": 5, "name": "Employee Attrition Analysis", "url": "https://github.com/VishwasGurao/hr-employee-attrition-analysis" },
-          { "@type": "ListItem", "position": 6, "name": "Laptop Price Prediction", "url": "https://github.com/VishwasGurao/Laptop-Price-Prediction-ML" }
-        ]
+      "sameAs": [
+        "https://www.linkedin.com/in/vishwas-gurav/",
+        "https://github.com/VishwasGurao",
+        "https://www.kaggle.com/vishwasgurao",
+        "https://medium.com/@vishwasgurao",
+        "https://dev.to/vishwasgurao",
+        "https://vishwasgurao.hashnode.dev"
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://vishwasgurao.in/#website",
+      "url": "https://vishwasgurao.in",
+      "name": "Vishwas Gurao — Data Analyst & Power BI · SQL · Python Portfolio",
+      "description": "Portfolio of Vishwas Gurao — Fresher Data Analyst from Kolhapur, India. Analytics projects in cybercrime intelligence, supply chain, NLP, and demand forecasting using Python, SQL, and Power BI.",
+      "inLanguage": "en-IN",
+      "author": { "@id": "https://vishwasgurao.in/#person" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://vishwasgurao.in/#projects"
+        },
+        "query-input": "required name=search_term_string"
       }
-    ]
-  }
+    },
+
+    {
+      "@type": "ProfilePage",
+      "@id": "https://vishwasgurao.in/#profilepage",
+      "url": "https://vishwasgurao.in",
+      "name": "Vishwas Gurao — Data Analyst Portfolio | Power BI · SQL · Python",
+      "description": "Personal portfolio of Vishwas Gurao, Data Analyst from Kolhapur, India. Featuring end-to-end analytics projects using Python, SQL, Power BI, and machine learning.",
+      "inLanguage": "en-IN",
+      "mainEntity": { "@id": "https://vishwasgurao.in/#person" },
+      "about": { "@id": "https://vishwasgurao.in/#person" },
+      "breadcrumb": { "@id": "https://vishwasgurao.in/#breadcrumb" }
+    },
+
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://vishwasgurao.in/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Vishwas Gurao — Data Analyst Portfolio",
+          "item": "https://vishwasgurao.in"
+        }
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://vishwasgurao.in/#projects-list",
+      "name": "Data Analytics Projects by Vishwas Gurao",
+      "description": "End-to-end data analytics and data science projects built with Python, SQL, Power BI, and machine learning.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Cyber Crime Intelligence Analysis — Kolhapur District Police",
+            "description": "Analysis of 20,000+ cybercrime complaint records (2019–2025) for Kolhapur District Police. Python, EDA, Power BI dashboards, geospatial hotspot mapping across 30+ police divisions.",
+            "url": "https://github.com/VishwasGurao/CyberCrime-Intelligence-Dashboard",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "cybercrime analysis, data analytics, Python, Power BI, Kolhapur Police"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Uber Demand Forecasting Analysis",
+            "description": "Demand forecasting on 4M+ Uber trip records using time-series analysis, 7-day smoothing, and Python. Identifies peak demand patterns and monthly growth trends.",
+            "url": "https://github.com/VishwasGurao/Uber-Trip-Demand-Analysis-Forecasting",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "demand forecasting, Uber trip analysis, time series, Python, data analytics"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Financial Sentiment Analysis (NLP)",
+            "description": "NLP classification of financial news tweets into sentiment categories using Logistic Regression, Linear SVM, and Naive Bayes. Python, Scikit-learn, 20-class classification.",
+            "url": "https://github.com/VishwasGurao/Twitter-Financial-News-Classification-using-NLP",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "NLP, sentiment analysis, financial data, Python, machine learning, Scikit-learn"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Supply Chain Analytics & Optimisation",
+            "description": "End-to-end supply chain analytics covering revenue, manufacturing cost, defect rates, lead times, and shipping optimisation using Python, EDA, and Power BI.",
+            "url": "https://github.com/VishwasGurao/Supply-Chain-Management-Analysis-Optimization-EDA-ML-",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "supply chain analytics, Python, Power BI, EDA, data analytics projects"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Employee Attrition Analysis (IBM HR Analytics)",
+            "description": "Exploratory data analysis on 1,470 IBM HR records identifying attrition drivers by job role, satisfaction level, and department. Python, Pandas, Seaborn.",
+            "url": "https://github.com/VishwasGurao/hr-employee-attrition-analysis",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "HR analytics, employee attrition, Python, EDA, data analytics"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Laptop Price Prediction (ML)",
+            "description": "Machine learning regression model to predict laptop prices based on RAM, CPU, GPU, and brand. Python, Scikit-learn, feature engineering, 1300+ records.",
+            "url": "https://github.com/VishwasGurao/Laptop-Price-Prediction-ML",
+            "author": { "@id": "https://vishwasgurao.in/#person" },
+            "keywords": "machine learning, price prediction, Python, Scikit-learn, data science portfolio"
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://vishwasgurao.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Vishwas Gurao?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vishwas Gurao is a fresher Data Analyst and MCA (Data Science) student at Shivaji University, Kolhapur, Maharashtra, India. He specialises in Python, SQL, Power BI, and machine learning, with project experience in cybercrime intelligence analysis, supply chain analytics, NLP, and demand forecasting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What tools does Vishwas Gurao use for data analysis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vishwas Gurao uses Python (Pandas, Seaborn, Matplotlib, Scikit-learn), SQL, Power BI, Jupyter Notebook, and Excel for data analysis, visualisation, and machine learning projects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Vishwas Gurao's featured data analytics projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vishwas Gurao's featured projects include a Cyber Crime Intelligence Analysis for Kolhapur District Police (20,000+ records), Uber Demand Forecasting (4M+ trips), Financial Sentiment Analysis using NLP, Supply Chain Analytics, Employee Attrition Analysis, and Laptop Price Prediction using machine learning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Vishwas Gurao available for data analyst roles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Vishwas Gurao is an immediate joiner, open to relocation, and available for Data Analyst, Business Intelligence, and Data Science roles across India. Contact: vishwasforjobhunt@gmail.com or visit https://vishwasgurao.in."
+          }
+        }
+      ]
+    }
+
+  ]
+}
 </script>
   <style>
     :root {
@@ -2962,21 +3146,22 @@
           </h1>
           <p class="hero-role reveal reveal-delay-2">
             <span id=hero-role-text class=role-highlight>Data Analyst</span>
-            — turning raw data into clear,<br>actionable insights with Python, SQL &amp; visualisation.
+            — Python · SQL · Power BI · Machine Learning<br>turning raw data into clear, actionable insights.
           </p>
           <p class="hero-desc reveal reveal-delay-3" id=hero-desc-text>
-            I work with structured datasets to uncover trends, build analytical reports, and communicate findings that
-            support decision-making. From cybercrime intelligence to demand forecasting, I bring analytical rigour to
-            every project.
+            I build end-to-end data analytics projects using Python, SQL, and Power BI — from cybercrime intelligence
+            dashboards for Kolhapur District Police to NLP sentiment classifiers and supply chain optimisation.
+            Open to Data Analyst and Data Science roles across India.
           </p>
           <div class="hero-tags reveal reveal-delay-3">
             <span class="badge accent">Python</span>
-            <span class="badge accent">Pandas</span>
+            <span class="badge accent">SQL</span>
+            <span class="badge accent">Power BI</span>
             <span class="badge accent">EDA</span>
-            <span class="badge accent">Data Visualisation</span>
-            <span class=badge>SQL</span>
+            <span class=badge>Pandas</span>
+            <span class=badge>Machine Learning</span>
+            <span class=badge>Data Visualisation</span>
             <span class=badge>Jupyter</span>
-            <span class=badge>Seaborn</span>
           </div>
           <div class="hero-ctas reveal reveal-delay-4">
             <a href=./RES/Vishwas_DataAnalyst.pdf download id=hero-resume-btn class=btn-primary>
@@ -3119,9 +3304,9 @@
               operational decisions.
             </p>
             <p class="reveal reveal-delay-2" id=about-mode-text>
-              In my Data Analyst role, I focus on structured EDA, business reporting, and insight communication. I'm
-              comfortable with Python (Pandas, Seaborn, Matplotlib), SQL queries, and translating complex outputs into
-              clear visual reports for non-technical audiences.
+              Based in Kolhapur, Maharashtra, I focus on structured EDA, business reporting, and insight communication.
+              My core stack is Python (Pandas, Seaborn, Matplotlib), SQL, and Power BI — translating complex data
+              into clear dashboards and reports for both technical and non-technical audiences.
             </p>
             <div style=display:flex;gap:var(--space-md);flex-wrap:wrap;margin-top:var(--space-lg)
               class="reveal reveal-delay-3">
@@ -3206,7 +3391,7 @@
     <section id=experience class=section aria-label="Experience and Education">
       <div class=container>
         <div class="section-label reveal">Background</div>
-        <h2 class="section-title reveal">Experience &amp; Education</h2>
+        <h2 class="section-title reveal">Experience &amp; Education — Vishwas Gurao</h2>
         <div class=experience-grid style=margin-top:var(--space-2xl)>
           <div>
             <h3
@@ -3325,10 +3510,10 @@
         <div class=projects-header>
           <div>
             <div class="section-label reveal">Projects</div>
-            <h2 class="section-title reveal" id=projects-heading>Analytics Projects</h2>
+            <h2 class="section-title reveal" id=projects-heading>Data Analytics &amp; Data Science Projects</h2>
             <p class="section-subtitle reveal" id=projects-subheading>
-              End-to-end analytical case studies spanning public safety intelligence, transportation demand, financial
-              NLP, and supply chain optimisation.
+              End-to-end data analytics projects built with Python, SQL, Power BI, and machine learning —
+              spanning cybercrime intelligence, demand forecasting, NLP sentiment analysis, and supply chain analytics.
             </p>
           </div>
           <div class=reveal style=display:flex;flex-direction:column;align-items:flex-end;gap:8px>
@@ -4363,7 +4548,7 @@
       function imgExists(src) {
         return new Promise(resolve => {
           const probe = new Image();
-          probe.onload = () => resolve(true);
+          probe.onload  = () => resolve(true);
           probe.onerror = () => resolve(false);
           probe.src = src;
         });
@@ -4585,13 +4770,13 @@
     if (btnDM) btnDM.addEventListener("click", () => { if ("ds" !== currentMode) applyMode("ds"); }); const restrictedModal = document.getElementById("restricted-modal"), modalClose = document.getElementById("modal-close"), modalBackdrop = document.getElementById("modal-backdrop"); function openRestrictedModal() { restrictedModal.classList.add("open"), document.body.style.overflow = "hidden", setTimeout((() => modalClose.focus()), 350) } function closeRestrictedModal() { restrictedModal.classList.remove("open"), document.body.style.overflow = "" } function initReveal() { const e = document.querySelectorAll(".reveal"), t = new IntersectionObserver((e => { e.forEach((e => { e.isIntersecting && (e.target.classList.add("revealed"), t.unobserve(e.target)) })) }), { threshold: .08, rootMargin: "0px 0px -40px 0px" }); e.forEach((e => t.observe(e))) } function initSkillBars() { const e = document.querySelectorAll(".skill-bar-fill"), t = new IntersectionObserver((e => { e.forEach((e => { if (e.isIntersecting) { const n = e.target.getAttribute("data-width"); e.target.style.width = n + "%", t.unobserve(e.target) } })) }), { threshold: .3 }); e.forEach((e => { e.style.width = "0%", t.observe(e) })) } function initActiveNavLinks() {
       // Map each section id → the nav href that should become active
       const sectionMap = {
-        'about': '#about',
-        'experience': '#experience',
-        'projects': '#projects',
-        'methodology': '#methodology',
-        'skills': '#skills',
+        'about':        '#about',
+        'experience':   '#experience',
+        'projects':     '#projects',
+        'methodology':  '#methodology',
+        'skills':       '#skills',
         'certifications': '#certifications',
-        'contact': '#contact'
+        'contact':      '#contact'
       };
       const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 68;
       const navLinks = document.querySelectorAll('.nav-links a');
