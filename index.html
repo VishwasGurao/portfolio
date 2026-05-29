@@ -2958,7 +2958,7 @@
             ANALYTICS PORTFOLIO
           </p>
           <h1 class="hero-name reveal reveal-delay-1">
-            Vishwas<br><em>Gurav</em>
+            Vishwas<br><em>Gurao</em>
           </h1>
           <p class="hero-role reveal reveal-delay-2">
             <span id=hero-role-text class=role-highlight>Data Analyst</span>
@@ -4363,7 +4363,7 @@
       function imgExists(src) {
         return new Promise(resolve => {
           const probe = new Image();
-          probe.onload  = () => resolve(true);
+          probe.onload = () => resolve(true);
           probe.onerror = () => resolve(false);
           probe.src = src;
         });
@@ -4585,13 +4585,13 @@
     if (btnDM) btnDM.addEventListener("click", () => { if ("ds" !== currentMode) applyMode("ds"); }); const restrictedModal = document.getElementById("restricted-modal"), modalClose = document.getElementById("modal-close"), modalBackdrop = document.getElementById("modal-backdrop"); function openRestrictedModal() { restrictedModal.classList.add("open"), document.body.style.overflow = "hidden", setTimeout((() => modalClose.focus()), 350) } function closeRestrictedModal() { restrictedModal.classList.remove("open"), document.body.style.overflow = "" } function initReveal() { const e = document.querySelectorAll(".reveal"), t = new IntersectionObserver((e => { e.forEach((e => { e.isIntersecting && (e.target.classList.add("revealed"), t.unobserve(e.target)) })) }), { threshold: .08, rootMargin: "0px 0px -40px 0px" }); e.forEach((e => t.observe(e))) } function initSkillBars() { const e = document.querySelectorAll(".skill-bar-fill"), t = new IntersectionObserver((e => { e.forEach((e => { if (e.isIntersecting) { const n = e.target.getAttribute("data-width"); e.target.style.width = n + "%", t.unobserve(e.target) } })) }), { threshold: .3 }); e.forEach((e => { e.style.width = "0%", t.observe(e) })) } function initActiveNavLinks() {
       // Map each section id → the nav href that should become active
       const sectionMap = {
-        'about':        '#about',
-        'experience':   '#experience',
-        'projects':     '#projects',
-        'methodology':  '#methodology',
-        'skills':       '#skills',
+        'about': '#about',
+        'experience': '#experience',
+        'projects': '#projects',
+        'methodology': '#methodology',
+        'skills': '#skills',
         'certifications': '#certifications',
-        'contact':      '#contact'
+        'contact': '#contact'
       };
       const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 68;
       const navLinks = document.querySelectorAll('.nav-links a');
