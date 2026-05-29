@@ -1409,7 +1409,9 @@
     }
 
     .gallery-stage .proj-img-container img {
-      height: 420px
+      height: 420px;
+      object-fit: contain;
+      width: 100%
     }
 
     /* Prev / Next arrows */
@@ -4356,30 +4358,67 @@
       let isRestricted = false;
       let current = 0;
 
-      function openGallery(imgSide, startIndex) {
-        images = JSON.parse(imgSide.dataset.galleryImages || '[]');
+      // Validate an image path: resolves true if loads, false if broken
+      function imgExists(src) {
+        return new Promise(resolve => {
+          const probe = new Image();
+          probe.onload = () => resolve(true);
+          probe.onerror = () => resolve(false);
+          probe.src = src;
+        });
+      }
+
+      async function openGallery(imgSide, startIndex) {
+        const raw = JSON.parse(imgSide.dataset.galleryImages || '[]');
         isRestricted = imgSide.dataset.galleryRestricted === 'true';
         const title = imgSide.dataset.galleryTitle || '';
-        if (!images.length) return;
+        if (!raw.length) return;
 
-        current = startIndex || 0;
+        // Show modal with a loading state while we validate paths
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        thumbsWrap.innerHTML = '';
+        mainImg.src = '';
         titleEl.textContent = title;
+        counterEl.textContent = 'Loading…';
 
-        // Build thumbnails
+        // Validate all paths in parallel — skip 404s
+        const checks = await Promise.all(raw.map(src => imgExists(src)));
+        images = raw.filter((_, i) => checks[i]);
+
+        if (!images.length) {
+          // Nothing valid — close immediately
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+          return;
+        }
+
+        // Update the card badge count to match actual valid images
+        const hintEl = imgSide.querySelector('.proj-gallery-hint');
+        if (hintEl) {
+          const textNode = [...hintEl.childNodes].find(n => n.nodeType === 3 && n.textContent.trim());
+          if (textNode) textNode.textContent = ' ' + images.length + ' CHARTS';
+          else hintEl.appendChild(document.createTextNode(' ' + images.length + ' CHARTS'));
+          // Also update the data attribute so future opens are consistent
+          imgSide.dataset.galleryImages = JSON.stringify(images);
+        }
+
+        current = Math.min(startIndex || 0, images.length - 1);
+
+        // Build thumbnails from validated paths only
         thumbsWrap.innerHTML = '';
         images.forEach((src, i) => {
           const t = document.createElement('div');
           t.className = 'gallery-thumb' + (isRestricted ? ' is-restricted' : '');
           const img = document.createElement('img');
-          img.src = src; img.alt = '';
+          img.src = src;
+          img.alt = '';
           t.appendChild(img);
           t.addEventListener('click', () => goTo(i));
           thumbsWrap.appendChild(t);
         });
 
         goTo(current);
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
         setTimeout(() => closeBtn.focus(), 50);
       }
 
